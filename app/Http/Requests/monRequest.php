@@ -25,7 +25,6 @@ class monRequest extends FormRequest
     {
         return [
             'ten_mon' => 'required',
-            'phuong_thuc_thi' => 'required',
             'ma_nganh' => 'required',
         ];
     }
@@ -33,7 +32,6 @@ class monRequest extends FormRequest
     {
         return [
             'ten_mon.required' => 'Tên môn không được để trống',
-            'phuong_thuc_thi.required' => 'Phương thức thi không được để trống',
             'ma_nganh.required' => 'Chọn ngành',
         ];
     }

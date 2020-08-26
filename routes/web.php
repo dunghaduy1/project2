@@ -25,7 +25,7 @@ Route::group(['prefix'=>'quan_ly_diem','as'=>'quan_ly_diem.','middleware'=>['abc
 	Route::get('load_mon','diem_controller@load_mon')->name('load_mon');
 	Route::get('load_diem','diem_controller@load_diem')->name('load_diem');
 	Route::get('load_them_diem','diem_controller@load_them_diem')->name('load_them_diem');
-	Route::post('them_diem_xu_ly','mon_controller@them_diem_xu_ly')->name('them_diem_xu_ly');
+	Route::post('them_diem','diem_controller@them_diem_xu_ly')->name('them_diem_xu_ly');
 
 });
 

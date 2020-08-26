@@ -10,13 +10,6 @@
 		<td>Tên môn
 		<input type="text" name="ten_mon" class="form-control"></td>
 	</tr>
-	<tr>
-		<td>Phương thức thi <br>
-			<input type="radio" id="lithuyet" name="phuong_thuc_thi" value="1">
-  			<label for="lithuyet">Lý Thuyết</label>
-  			<input type="radio" id="thuchanh" name="phuong_thuc_thi" value="2">
-  			<label for="thuchanh">Thực hành</label>
-	</tr>
 		<input type="hidden" name="trang_thai" class="form-control" value="1"></td>
 	<tr>
 		<td>Tên ngành học

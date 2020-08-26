@@ -11,19 +11,6 @@
 		<td>Tên môn
 		<input type="text" name="ten_mon" value="{{ $each->ten_mon}}"class="form-control"></td>
 	</tr>
-	<tr>	
-		<td>Phương thức thi <br>
-			<input type="radio" id="lithuyet" name="phuong_thuc_thi" value="1"
-			@unless(($each->phuong_thuc_thi)==1)
-			checked>
-			@endunless
-  			<label for="lithuyet">Lý Thuyết</label>
-  			<input type="radio" id="thuchanh" name="phuong_thuc_thi" value="2"
-  			@unless(($each->phuong_thuc_thi)==2)
-			checked>
-			@endunless
-  			<label for="thuchanh">Thực hành</label>
-	</tr>
 
 	  		<input type="hidden" name="trang_thai" value="{{ $each->trang_thai}}"></td>
 

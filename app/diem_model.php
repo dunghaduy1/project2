@@ -7,6 +7,9 @@ use DB;
 class diem_model extends Model
 {
     public $diem;
+    public $diem_lan_mot;
+    public $diem_lan_hai;
+    public $lan_thi;
     public $khoa;
     public $nganh;
     public $lop;
@@ -46,7 +49,7 @@ class diem_model extends Model
                               sinh_vien.ngay_sinh as ngay_sinh,
                               diem.diem_lan_mot as diem_lan_mot,
                               diem.diem_lan_hai as diem_lan_hai,
-                              diem.trang_thai as trang_thai 
+                              diem.kieu_thi as kieu_thi 
                       FROM (sinh_vien LEFT JOIN lop ON sinh_vien.ma_lop = lop.ma_lop)
                       INNER JOIN diem ON sinh_vien.ma_sinh_vien = diem.ma_sinh_vien
                       INNER JOIN mon_hoc ON diem.ma_mon = mon_hoc.ma_mon
@@ -68,11 +71,12 @@ class diem_model extends Model
     return $sinh_vien;
   }
     public function process_insert(){
-    DB::insert("INSERT INTO diem (diem_lan_hai,diem_lan_hai,trang_thai,ma_sinh_vien,ma_mon) 
+    DB::connection()->enableQueryLog();
+    DB::insert("INSERT INTO diem (diem_lan_mot,diem_lan_hai,kieu_thi,ma_sinh_vien,ma_mon) 
                 VALUES (?,?,?,?,?)",[
       $this->diem_lan_mot,
       $this->diem_lan_hai,
-      $this->trang_thai,
+      $this->kieu_thi,
       $this->ma_sinh_vien,
       $this->ma_mon,
     ]);

@@ -14,16 +14,14 @@ class CreateDiemTable extends Migration
     public function up()
     {
         Schema::create('diem', function (Blueprint $table) {
-            $table->float('diem_lan_mot',50)->nullable();
-            $table->float('diem_lan_hai',50)->nullable();
-            $table->boolean('trang_thai');
+            $table->float('diem_lan_mot')->nullable();
+            $table->float('diem_lan_hai')->nullable();
+            $table->integer('kieu_thi')->unsigned();
             $table->integer('ma_sinh_vien')->unsigned();
             $table->foreign('ma_sinh_vien')->references('ma_sinh_vien')->on('sinh_vien');
             $table->integer('ma_mon')->unsigned();
             $table->foreign('ma_mon')->references('ma_mon')->on('mon_hoc');
-            $table->primary(['ma_sinh_vien','ma_mon']);
-            
-            
+            $table->primary(['ma_sinh_vien','ma_mon','kieu_thi']);
         });
     }
 

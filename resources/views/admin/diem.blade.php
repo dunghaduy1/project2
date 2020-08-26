@@ -85,7 +85,7 @@
 	  	<th>Ngày sinh</th>
 	  	<th>Điểm lần 1</th>
 	  	<th>Điểm lần 2</th>
-	  	<th>Trạng thái</th>
+	  	<th>Kiểu thi</th>
 	  	<th>Sửa</th>
 	  </tr>
 	</thead>

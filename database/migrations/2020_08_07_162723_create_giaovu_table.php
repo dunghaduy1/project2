@@ -16,8 +16,8 @@ class CreateGiaovuTable extends Migration
         Schema::create('giao_vu', function (Blueprint $table) {
             $table->increments('ma_giaovu');
             $table->string('ten',100);
-            $table->string('anh_dai_dien',100);
-            $table->string('email',100);
+            $table->string('anh_dai_dien',100)->nullable();
+            $table->string('email',100)->nullable();
             $table->string('so_dien_thoai',20);
             $table->string('username',100);
             $table->string('password',100);

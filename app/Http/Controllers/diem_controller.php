@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\diem_model;
 use Session;
+use Exception;
 use App\Http\Requests\diemRequest;
 class diem_controller extends Controller
 {
@@ -56,7 +57,7 @@ class diem_controller extends Controller
 		  		<td> $each->ngay_sinh </td>
 		  		<td> $each->diem_lan_mot </td>
 		  		<td> $each->diem_lan_hai </td>
-		  		<td> $each->trang_thai </td>
+		  		<td> $each->kieu_thi </td>
 		  		<td><a href=>Sửa </a></td>
 		  		</tr>
 	  		";
@@ -74,12 +75,11 @@ class diem_controller extends Controller
 		  		<td> '.$each->ma_sinh_vien.' </td>
 		  		<td> '.$each->ten.' </td>
 		  		<td> '.$each->ngay_sinh.' </td>
-		  		<td><input type="text" name="diem_lan_mot" class="form-control"></td>
-		  		<td><input type="text" name="diem_lan_hai" class="form-control"></td>
-		  		<td><select name="trang_thai" id="" class="form-control">
-		  				<option value="1">Đạt</option>
-		  				<option value="2">Trượt</option>
-		  				<option value="3">Thi lại</option>
+		  		<td><input type="text" name="diem['.$each->ma_sinh_vien.'][1]" class="form-control"></td>
+		  		<td><input type="text" name="diem['.$each->ma_sinh_vien.'][2]" class="form-control"></td>
+		  		<td><select name="kieu_thi['.$each->ma_sinh_vien.']" id="" class="form-control">
+		  				<option value="1">Lý thuyết</option>
+		  				<option value="2">Thực Hành</option>
 		  			</select>
 		  		</td>
 		  		</tr>
@@ -88,14 +88,26 @@ class diem_controller extends Controller
 	  	echo $output;        
 	}
 	public function them_diem_xu_ly(Request $rq){
+		// dd('abc');
 		$diem = new diem_model();
-		$diem->ma_sinh_vien = $rq->ma_sinh_vien;
+		$array_diem = $rq->diem;
 		$diem->ma_mon = $rq->ma_mon;
-		$diem->diem_lan_mot = $rq->diem_lan_mot;
-		$diem->diem_lan_hai = $rq->diem_lan_hai;
-		$diem->trang_thai = $rq->trang_thai;
-		
-		$diem->process_insert();
+		foreach ($array_diem as $ma_sinh_vien => $value) {
+			$diem->ma_sinh_vien = $ma_sinh_vien;
+			foreach ($value as $lan_thi => $diem_thi) {
+				$diem->lan_thi = $lan_thi;
+				$diem->diem_lan_mot = $value[1];
+				$diem->diem_lan_hai = $value[2];
+				$diem->kieu_thi = $rq->kieu_thi[$ma_sinh_vien];
+				try{
+					$diem->process_insert();
+				}
+				catch(Exception $e){
+
+				}
+			}
+		}
+
 		return redirect()->route('quan_ly_diem.view_diem');
 	}
 

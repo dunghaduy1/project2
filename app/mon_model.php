@@ -21,9 +21,8 @@ class mon_model extends Model
     return $nganh;
   }
  	public function process_insert(){
- 		DB::insert("INSERT INTO mon_hoc (ten_mon,phuong_thuc_thi,trang_thai,ma_nganh) VALUES (?,?,?,?)",[
+ 		DB::insert("INSERT INTO mon_hoc (ten_mon,trang_thai,ma_nganh) VALUES (?,?,?)",[
  			$this->ten_mon,
- 			$this->phuong_thuc_thi,
  			$this->trang_thai,
  			$this->ma_nganh
  		]);
@@ -35,9 +34,8 @@ class mon_model extends Model
  		return $mon;
  	}
  	 public function process_update(){
-    	DB::update("update mon_hoc set ten_mon=?,phuong_thuc_thi=?,trang_thai=?,ma_nganh=? where ma_mon=?",[
+    	DB::update("update mon_hoc set ten_mon=?,trang_thai=?,ma_nganh=? where ma_mon=?",[
     		$this->ten_mon,
-    		$this->phuong_thuc_thi,
     		$this->trang_thai,
     		$this->ma_nganh,
     		$this->ma_mon

@@ -39,6 +39,29 @@
 		</td>
 	</tr>
 </table>
+<form action="{{ route('quan_ly_diem.them_diem_xu_ly') }}" method="post">
+	{{csrf_field()}}
+	<input type="hidden" name="ma_mon" id="monid" value="" class="form-control">
+	<table class="table table-hover"  >
+	<thead>
+	  <tr>
+	  	<th>Mã SV</th>
+	  	<th>Tên</th>
+	  	<th>Ngày sinh</th>
+	  	<th>Điểm lần 1</th>
+	  	<th>Điểm lần 2</th>
+	  	<th>Kiểu thi</th>
+	  </tr>
+	</thead>
+	<tbody id="viewdiem">
+	
+	</tbody>
+</table>
+<button class="btn btn-primary">Thêm</button>
+</form>
+@endsection
+
+@push('js')
 <script type="text/javascript">
 	$(document).ready(function(){
 		$('#ten_khoa,#ten_nganh').change(function(){
@@ -56,10 +79,6 @@
 				}
 			});
 		});
-	});
-</script>
-<script>
-	$(document).ready(function(){
 		$('#ten_nganh').change(function(){
 			$.ajax({
 				url: '{{route("quan_ly_diem.load_mon")}}',
@@ -73,35 +92,9 @@
 				}
 			});
 		});
-	});
-</script>
-<form action="{{ route('quan_ly_diem.them_diem_xu_ly') }}" method="post">
-	<input type="hidden" name="ma_mon" id="monid" value="" class="form-control">
-<script>
-	$(document).ready(function(){
 		$('#ten_mon').change(function(){
 			$("#monid").val($('#ten_mon').val());
 		});
-	});	
-</script>	
-
-	<table class="table table-hover"  >
-	<thead>
-	  <tr>
-	  	<th>Mã SV</th>
-	  	<th>Tên</th>
-	  	<th>Ngày sinh</th>
-	  	<th>Điểm lần 1</th>
-	  	<th>Điểm lần 2</th>
-	  	<th>Trạng thái</th>
-	  </tr>
-	</thead>
-	<tbody id="viewdiem">
-	
-	</tbody>
-</table>
-<script>
-	$(document).ready(function(){
 		$('#ten_nganh,#ten_mon,#ten_lop,#ten_khoa').change(function(){
 			$.ajax({
 				url: '{{route("quan_ly_diem.load_them_diem")}}',
@@ -120,6 +113,4 @@
 		});
 	});
 </script>
-<button class="btn btn-primary">Thêm</button>
-</form>
-@endsection
+@endpush

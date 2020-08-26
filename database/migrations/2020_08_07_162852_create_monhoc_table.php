@@ -16,7 +16,6 @@ class CreateMonhocTable extends Migration
         Schema::create('mon_hoc', function (Blueprint $table) {
             $table->increments('ma_mon');
             $table->string('ten_mon',50);
-            $table->boolean('phuong_thuc_thi');
             $table->boolean('trang_thai');
             $table->integer('ma_nganh')->unsigned();
             $table->foreign('ma_nganh')->references('ma_nganh')->on('nganh');
