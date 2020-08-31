@@ -40,11 +40,27 @@
 	</tr>
 
 
-<script type="text/javascript">
+<table class="table table-hover"  >
+	<thead>
+	  <tr>
+	  	<th>Mã SV</th>
+	  	<th>Tên</th>
+	  	<th>Ngày sinh</th>
+	  	<th>Điểm lần 1</th>
+	  	<th>Điểm lần 2</th>
+	  	<th>Kiểu thi</th>
+	  </tr>
+	</thead>
+	<tbody id="viewdiem">
+	</tbody>
+</table>
+@endsection
+@push('js')
+<script>
 	$(document).ready(function(){
 		$('#ten_khoa,#ten_nganh').change(function(){
-			// var ma_khoa = $('#ten_khoa').val();
-			// var ma_nganh = $('#ten_nganh').val();
+			var ma_khoa = $('#ten_khoa').val();
+			var ma_nganh = $('#ten_nganh').val();
 			$.ajax({
 				url: '{{route("quan_ly_diem.load_lop")}}',
 				type: 'GET',
@@ -57,10 +73,6 @@
 				}
 			});
 		});
-	});
-</script>
-<script>
-	$(document).ready(function(){
 		$('#ten_nganh').change(function(){
 			$.ajax({
 				url: '{{route("quan_ly_diem.load_mon")}}',
@@ -74,27 +86,6 @@
 				}
 			});
 		});
-	});
-</script>
-
-<table class="table table-hover"  >
-	<thead>
-	  <tr>
-	  	<th>Mã SV</th>
-	  	<th>Tên</th>
-	  	<th>Ngày sinh</th>
-	  	<th>Điểm lần 1</th>
-	  	<th>Điểm lần 2</th>
-	  	<th>Kiểu thi</th>
-	  	<th>Sửa</th>
-	  </tr>
-	</thead>
-	<tbody id="viewdiem">
-		
-	</tbody>
-</table>
-<script>
-	$(document).ready(function(){
 		$('#ten_nganh,#ten_mon,#ten_lop,#ten_khoa').change(function(){
 			$.ajax({
 				url: '{{route("quan_ly_diem.load_diem")}}',
@@ -111,6 +102,21 @@
 				}
 			});
 		});
+		$(document).on('blur','.input_diem',function(){
+			$.ajax({
+				url: '{{route("quan_ly_diem.update_diem")}}',
+				type: 'GET',
+				data:{
+					ma_sinh_vien: $(this).data('ma_sinh_vien'),
+					lan: $(this).data('lan'),
+					ma_mon: $('#ten_mon').val(),
+					diem: $(this).val(),
+				},
+				success:function(){
+					alert("thành công");
+				}
+			});
+		})
 	});
 </script>
-@endsection
+@endpush

@@ -29,7 +29,7 @@ class diem_controller extends Controller
         foreach($lop as $each)
         {
            $output .= "<option value='$each->ma_lop'>$each->ten_lop</option>";
-       }
+       	}
         echo $output;
 	}
 	public function load_mon(Request $rq){
@@ -49,18 +49,20 @@ class diem_controller extends Controller
 		$ma_mon = $request->ma_mon;
 
 		$diem = diem_model::get_diem_by_lop_mon($ma_lop,$ma_mon);
-        $output="";
+        $output='';
 		foreach ($diem as $each){
-			$output .="<tr>
-		  		<td> $each->ma_sinh_vien </td>
-		  		<td> $each->ten </td>
-		  		<td> $each->ngay_sinh </td>
-		  		<td> $each->diem_lan_mot </td>
-		  		<td> $each->diem_lan_hai </td>
-		  		<td> $each->kieu_thi </td>
-		  		<td><a href=>Sửa </a></td>
+			$output .='
+			<form action="" method="POST"> 
+			<tr>
+		  		<td> '.$each->ma_sinh_vien.' </td>
+		  		<td> '.$each->ten.' </td>
+		  		<td> '.$each->ngay_sinh.' </td>
+		  		<td> <input type="text" data-ma_sinh_vien="'. $each->ma_sinh_vien.'" data-lan="1" class="form-control input_diem"  value="'.$each->diem_lan_mot.'"> </td>
+		  		<td> <input type="text" data-ma_sinh_vien="'. $each->ma_sinh_vien.'" data-lan="2"  class="form-control input_diem" value="'.$each->diem_lan_hai.'"> </td>
+		  		<td> '.$each->kieu_thi.' </td>
 		  		</tr>
-	  		";
+		  	</form>
+	  		';
 	    }
 	  	echo $output;        
 	}
@@ -75,8 +77,8 @@ class diem_controller extends Controller
 		  		<td> '.$each->ma_sinh_vien.' </td>
 		  		<td> '.$each->ten.' </td>
 		  		<td> '.$each->ngay_sinh.' </td>
-		  		<td><input type="text" name="diem['.$each->ma_sinh_vien.'][1]" class="form-control"></td>
-		  		<td><input type="text" name="diem['.$each->ma_sinh_vien.'][2]" class="form-control"></td>
+		  		<td><input type="text" id="" name="diem['.$each->ma_sinh_vien.'][1]" class="form-control"></td>
+		  		<td><input type="text" id="" name="diem['.$each->ma_sinh_vien.'][2]" class="form-control"></td>
 		  		<td><select name="kieu_thi['.$each->ma_sinh_vien.']" id="" class="form-control">
 		  				<option value="1">Lý thuyết</option>
 		  				<option value="2">Thực Hành</option>
@@ -88,7 +90,6 @@ class diem_controller extends Controller
 	  	echo $output;        
 	}
 	public function them_diem_xu_ly(Request $rq){
-		// dd('abc');
 		$diem = new diem_model();
 		$array_diem = $rq->diem;
 		$diem->ma_mon = $rq->ma_mon;
@@ -110,5 +111,23 @@ class diem_controller extends Controller
 
 		return redirect()->route('quan_ly_diem.view_diem');
 	}
+
+	public function update_diem(Request $rq)
+	{
+		$diem = new diem_model();
+		$diem->ma_sinh_vien = $rq->ma_sinh_vien;
+		$diem->ma_mon = $rq->ma_mon;
+		$diem->lan = $rq->lan;
+		$diem->diem = $rq->diem;
+		if($diem->lan==1){
+			$diem->update_diem_mot();
+		};
+		if($diem->lan==2){
+			$diem->update_diem_();
+		};
+
+	}
+
+	
 
 }

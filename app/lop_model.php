@@ -18,6 +18,7 @@ class lop_model extends Model
       INNER JOIN khoa ON lop.ma_khoa=khoa.ma_khoa)');
  		return $lop;
  	}
+    
  	public function process_insert(){
  		DB::insert("INSERT INTO lop (ten_lop,ma_khoa,ma_nganh) VALUES (?,?,?)",[
  			$this->ten_lop,

@@ -40,6 +40,27 @@ class sinh_vien_model extends Model
     $lop=DB::Select("Select * FROM lop ");
     return $lop;
   }
+  static function get_khoa(){
+    $khoa=DB::Select("Select * FROM khoa ");
+    return $khoa;
+  }
+    static function get_nganh(){
+    $nganh=DB::Select("Select * FROM nganh ");
+    return $nganh;
+  }
+  static function get_lop_by_nganh_khoa($ma_khoa,$ma_nganh){
+    $lop = DB::select("select * from lop where ma_khoa = ? and ma_nganh = ?",[
+      $ma_khoa,
+      $ma_nganh
+    ]);
+    return $lop;
+  }
+static function get_sinh_vien_by_lop($ma_lop){
+    $sinh_vien = DB::select("select * from sinh_vien where ma_lop = ?",[
+      $ma_lop
+    ]);
+    return $sinh_vien;
+  }
  	static function get_one($ma_sinh_vien){
  		$sinh_vien = DB::Select("Select * FROM sinh_vien where ma_sinh_vien = ?",[
  			$ma_sinh_vien

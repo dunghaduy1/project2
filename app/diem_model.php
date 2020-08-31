@@ -7,6 +7,7 @@ use DB;
 class diem_model extends Model
 {
     public $diem;
+    public $lan;
     public $diem_lan_mot;
     public $diem_lan_hai;
     public $lan_thi;
@@ -80,5 +81,21 @@ class diem_model extends Model
       $this->ma_sinh_vien,
       $this->ma_mon,
     ]);
+  }
+  public function update_diem_mot(){
+    DB::delete("update diem set diem_lan_mot=? where ma_sinh_vien=? and ma_mon=? and kieu_thi=?",[
+        $this->diem,
+        $this->ma_sinh_vien,
+        $this->ma_mon,
+        $this->kieu_thi,
+      ]);
+  }
+  public function update_diem_hai(){
+    DB::delete("update diem set diem_lan_hai=? where ma_sinh_vien=? and ma_mon=? and kieu_thi=?",[
+        $this->diem,
+        $this->ma_sinh_vien,
+        $this->ma_mon,
+        $this->kieu_thi,
+      ]);
   }
 }

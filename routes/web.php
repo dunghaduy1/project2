@@ -25,7 +25,10 @@ Route::group(['prefix'=>'quan_ly_diem','as'=>'quan_ly_diem.','middleware'=>['abc
 	Route::get('load_mon','diem_controller@load_mon')->name('load_mon');
 	Route::get('load_diem','diem_controller@load_diem')->name('load_diem');
 	Route::get('load_them_diem','diem_controller@load_them_diem')->name('load_them_diem');
-	Route::post('them_diem','diem_controller@them_diem_xu_ly')->name('them_diem_xu_ly');
+	Route::post('process_update','diem_controller@process_update')->name('process_update');
+	Route::post('them_diem_xu_ly','diem_controller@them_diem_xu_ly')->name('them_diem_xu_ly');
+	Route::get('update_diem','diem_controller@update_diem')->name('update_diem');
+
 
 });
 
@@ -69,11 +72,16 @@ Route::group(['prefix'=>'quan_ly_nganh','as'=>'quan_ly_nganh.','middleware'=>['a
 
 Route::group(['prefix'=>'quan_ly_sinh_vien','as'=>'quan_ly_sinh_vien.','middleware'=>['abc']],function(){
 	Route::get('view_sinh_vien','sinh_vien_controller@view_sinh_vien')->name('view_sinh_vien');
+	Route::get('get_sinh_vien_by_lop','sinh_vien_controller@get_sinh_vien_by_lop')->name('get_sinh_vien_by_lop');
 	Route::get('them_sinh_vien','sinh_vien_controller@them_sinh_vien')->name('them_sinh_vien');
 	Route::post('them_sinh_vien_xu_ly','sinh_vien_controller@them_sinh_vien_xu_ly')->name('them_sinh_vien_xu_ly');
-	Route::get('sua_sinh_vien/{ma_sinh_vien}','sinh_vien_controller@sua_sinh_vien')->name('sua_sinh_vien');
+	Route::get('sua_sinh_vien','sinh_vien_controller@sua_sinh_vien')->name('sua_sinh_vien');
 	Route::post('sua_sinh_vien_xu_ly/{ma_sinh_vien}','sinh_vien_controller@sua_sinh_vien_xu_ly')->name('sua_sinh_vien_xu_ly');
 	Route::get('khoa_sinh_vien/{ma_sinh_vien}','sinh_vien_controller@khoa_sinh_vien')->name('khoa_sinh_vien');
 	Route::get('xoa_sinh_vien/{ma_sinh_vien}','sinh_vien_controller@xoa_sinh_vien')->name('xoa_sinh_vien');
+	Route::get('them_sinh_vien_excel','sinh_vien_controller@them_sinh_vien_excel')->name('them_sinh_vien_excel');
+	Route::post('importExcel','sinh_vien_controller@importExcel')->name('importExcel');
+	Route::get('load_lop','sinh_vien_controller@load_lop')->name('load_lop');
+
 	
 });

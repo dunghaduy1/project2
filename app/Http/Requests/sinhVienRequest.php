@@ -33,6 +33,7 @@ class sinhVienRequest extends FormRequest
             'gioi_tinh' => 'required',
             'ma_lop' => 'required',
             'anh_dai_dien' => 'image|max:2028',
+
         ];
     }
 
