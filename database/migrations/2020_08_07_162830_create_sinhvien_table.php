@@ -16,11 +16,8 @@ class CreateSinhvienTable extends Migration
         Schema::create('sinh_vien', function (Blueprint $table) {
             $table->increments('ma_sinh_vien');
             $table->string('ten',100);
-            $table->string('email',100)->nullable();
+            $table->string('email',100);
             $table->string('so_dien_thoai',20);
-            $table->string('anh_dai_dien',100)->nullable();
-            $table->string('username',100);
-            $table->string('password',100);
             $table->date('ngay_sinh',100);
             $table->boolean('gioi_tinh');
             $table->boolean('trang_thai');

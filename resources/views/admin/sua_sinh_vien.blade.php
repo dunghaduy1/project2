@@ -17,14 +17,6 @@
 		<input type="email" name="email" value="{{ $each->email }}" class="form-control"></td>
 	</tr>
 	<tr>
-		<td>Username:
-		<input type="text" name="username" value="{{ $each->username }}" class="form-control"></td>
-	</tr>
-	<tr>
-		<td>Password:
-			<input type="password" name="password" value="{{ $each->password }}" class="form-control"></td>
-	</tr>
-	<tr>
 		<td>Ngày sinh:
 		<input type="date" name="ngay_sinh" value="{{ $each->ngay_sinh }}" class="form-control"></td>
 	</tr>

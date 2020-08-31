@@ -14,18 +14,6 @@
 		<td>Email
 		<input type="email" name="email" class="form-control"></td>
 	</tr>
-		<tr>
-		<td>Ảnh đại diện
-		<input type="file" name="anh_dai_dien" class="form-control"></td>
-	</tr>
-	<tr>
-		<td>Username
-		<input type="text" name="username" class="form-control"></td>
-	</tr>
-	<tr>
-		<td>Password
-		<input type="password" name="password" class="form-control"></td>
-	</tr>
 	<tr>
 		<td>Ngày sinh
 		<input type="date" name="ngay_sinh" class="form-control"></td>

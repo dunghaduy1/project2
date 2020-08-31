@@ -23,10 +23,6 @@ class sinh_vien_controller extends Controller
 		$sinh_vien = new sinh_vien_model();
 		$sinh_vien->ten = $rq->ten;
 		$sinh_vien->email = $rq->email;
-		$sinh_vien->anh_dai_dien = $rq->anh_dai_dien->getClientOriginalName();
-        $rq->anh_dai_dien->move('img/avatar',$rq->anh_dai_dien->getClientOriginalName());
-		$sinh_vien->username = $rq->username;
-		$sinh_vien->password = $rq->password;
 		$sinh_vien->ngay_sinh = $rq->ngay_sinh;
 		$sinh_vien->so_dien_thoai = $rq->so_dien_thoai;
 		$sinh_vien->gioi_tinh = $rq->gioi_tinh;
@@ -46,8 +42,6 @@ class sinh_vien_controller extends Controller
    	$sinh_vien->ma_sinh_vien = $rq->ma_sinh_vien;
 		$sinh_vien->ten = $rq->ten;
 		$sinh_vien->email = $rq->email;
-		$sinh_vien->username = $rq->username;
-		$sinh_vien->password = $rq->password;
 		$sinh_vien->ngay_sinh = $rq->ngay_sinh;
 		$sinh_vien->so_dien_thoai = $rq->so_dien_thoai;
 		$sinh_vien->gioi_tinh = $rq->gioi_tinh;
