@@ -24,7 +24,7 @@ class diemRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'diem' => 'min:0|max:10',
         ];
     }
 }

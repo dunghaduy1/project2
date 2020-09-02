@@ -22,7 +22,8 @@ class sinhVienImport implements ToModel, WithHeadingRow
                 'trang_thai' => 1,
                 'ma_lop' => Classes::where('ten_lop',$row['ten_lop'])->value('ma_lop'),
             ];
-            return new Student($array);
+            // return new Student($array);
+            dd($array);
         }
     }
 }

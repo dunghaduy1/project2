@@ -43,7 +43,7 @@
         <li class="sub collapse" id="menu1">
             <a href="{{ route('quan_ly_sinh_vien.view_sinh_vien') }}" class="nav-link" data-parent="#menu1">Danh sách sinh viên</a>
             <a href="{{ route('quan_ly_sinh_vien.them_sinh_vien')}}" class="nav-link" data-parent="#menu1">Thêm sinh viên</a>
-            <a href="{{ route('quan_ly_sinh_vien.them_sinh_vien_excel')}}" class="nav-link" data-parent="#menu1">Thêm sinh viên</a>
+            <a href="{{ route('quan_ly_sinh_vien.them_sinh_vien_excel')}}" class="nav-link" data-parent="#menu1">Thêm sinh viên excel</a>
         </li>
         <!-- menu3 -->
         <li class="nav-item"><a href="#menu2" class="nav-link collapsed" data-toggle="collapse"><i class="fa fa-book"></i>Môn học<span class="sub-ico"><i class="fa fa-angle-down"></i></span></a></li>

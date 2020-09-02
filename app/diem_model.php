@@ -15,6 +15,7 @@ class diem_model extends Model
     public $nganh;
     public $lop;
     public $mon;
+    public $kieu_thi;
     static function get_all(){
     	$diem = DB::select('SELECT * FROM `sinh_vien` JOIN `diem` ON sinh_vien.ma_sinh_vien=diem.ma_sinh_vien');
     	return $diem;
@@ -83,15 +84,17 @@ class diem_model extends Model
     ]);
   }
   public function update_diem_mot(){
-    DB::delete("update diem set diem_lan_mot=? where ma_sinh_vien=? and ma_mon=? and kieu_thi=?",[
+    DB::connection()->enableQueryLog();
+    DB::update("update diem set diem_lan_mot=? where ma_sinh_vien=? and ma_mon=? and kieu_thi=?",[
         $this->diem,
         $this->ma_sinh_vien,
         $this->ma_mon,
         $this->kieu_thi,
       ]);
+    print_r(DB::connection()->getQueryLog());
   }
   public function update_diem_hai(){
-    DB::delete("update diem set diem_lan_hai=? where ma_sinh_vien=? and ma_mon=? and kieu_thi=?",[
+    DB::update("update diem set diem_lan_hai=? where ma_sinh_vien=? and ma_mon=? and kieu_thi=?",[
         $this->diem,
         $this->ma_sinh_vien,
         $this->ma_mon,

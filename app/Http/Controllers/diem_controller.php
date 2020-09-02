@@ -43,28 +43,11 @@ class diem_controller extends Controller
         echo $output;
 	}
 		public function load_diem(Request $request){
-		$ma_khoa = $request->ma_khoa;
-		$ma_nganh = $request->ma_nganh;
 		$ma_lop = $request->ma_lop;
 		$ma_mon = $request->ma_mon;
 
 		$diem = diem_model::get_diem_by_lop_mon($ma_lop,$ma_mon);
-        $output='';
-		foreach ($diem as $each){
-			$output .='
-			<form action="" method="POST"> 
-			<tr>
-		  		<td> '.$each->ma_sinh_vien.' </td>
-		  		<td> '.$each->ten.' </td>
-		  		<td> '.$each->ngay_sinh.' </td>
-		  		<td> <input type="text" data-ma_sinh_vien="'. $each->ma_sinh_vien.'" data-lan="1" class="form-control input_diem"  value="'.$each->diem_lan_mot.'"> </td>
-		  		<td> <input type="text" data-ma_sinh_vien="'. $each->ma_sinh_vien.'" data-lan="2"  class="form-control input_diem" value="'.$each->diem_lan_hai.'"> </td>
-		  		<td> '.$each->kieu_thi.' </td>
-		  		</tr>
-		  	</form>
-	  		';
-	    }
-	  	echo $output;        
+		return $diem;        
 	}
 	public function load_them_diem(Request $request){
 		$ma_lop = $request->ma_lop;
@@ -112,18 +95,19 @@ class diem_controller extends Controller
 		return redirect()->route('quan_ly_diem.view_diem');
 	}
 
-	public function update_diem(Request $rq)
+	public function update_diem(diemRequest $rq)
 	{
 		$diem = new diem_model();
 		$diem->ma_sinh_vien = $rq->ma_sinh_vien;
 		$diem->ma_mon = $rq->ma_mon;
 		$diem->lan = $rq->lan;
 		$diem->diem = $rq->diem;
+		$diem->kieu_thi =$rq->kieu_thi;
 		if($diem->lan==1){
 			$diem->update_diem_mot();
 		};
 		if($diem->lan==2){
-			$diem->update_diem_();
+			$diem->update_diem_hai();
 		};
 
 	}

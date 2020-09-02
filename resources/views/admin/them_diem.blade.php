@@ -41,7 +41,6 @@
 </table>
 <form action="{{ route('quan_ly_diem.them_diem_xu_ly') }}" method="post">
 	{{csrf_field()}}
-	<input type="hidden" name="ma_mon" id="monid" value="" class="form-control">
 	<table class="table table-hover"  >
 	<thead>
 	  <tr>

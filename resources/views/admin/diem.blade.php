@@ -34,7 +34,7 @@
 		</td>
 		<td>
 			<select name="ma_mon" id="ten_mon"class="form-control">
-				<option value="0"></option>
+				<option value="0">Chọn</option>
 			</select>
 		</td>
 	</tr>
@@ -52,6 +52,7 @@
 	  </tr>
 	</thead>
 	<tbody id="viewdiem">
+
 	</tbody>
 </table>
 @endsection
@@ -89,16 +90,39 @@
 		$('#ten_nganh,#ten_mon,#ten_lop,#ten_khoa').change(function(){
 			$.ajax({
 				url: '{{route("quan_ly_diem.load_diem")}}',
+				dataType: 'json',
 				type: 'GET',
 				data:{
-					ma_nganh: $('#ten_nganh').val(),
-					ma_khoa: $('#ten_khoa').val(),
 					ma_lop: $('#ten_lop').val(),
 					ma_mon: $('#ten_mon').val(),
-
 				},
 				success: function(data){
-					$("#viewdiem").html(data);
+					$('#view_diem').empty();
+					$(data).each(function(){
+						$('#viewdiem').append(`
+							<tr>
+								<td>
+									${this.ma_sinh_vien}
+								</td>
+							  	<td>
+									${this.ten}
+								</td>
+							  	<td>
+									${this.ngay_sinh}
+								</td>
+							  	<td>
+							  	<input type="text" data-ma_sinh_vien="${this.ma_sinh_vien}" data-lan="1" class="form-control input_diem" data-kieu_thi="${this.kieu_thi}"  value="${this.diem_lan_mot}">
+									
+								</td>
+								<td>
+									<input type="text" data-ma_sinh_vien="${this.ma_sinh_vien}" data-lan="2" class="form-control input_diem" data-kieu_thi="${this.kieu_thi}"  value="${this.diem_lan_hai}">
+								</td>
+							  	<td>
+									${(this.kieu_thi==1) ? "Lý thuyết":"Thực hành" }
+								</td>
+							</tr>
+						`);
+					});
 				}
 			});
 		});
@@ -111,10 +135,8 @@
 					lan: $(this).data('lan'),
 					ma_mon: $('#ten_mon').val(),
 					diem: $(this).val(),
+					kieu_thi: $(this).data('kieu_thi'),
 				},
-				success:function(){
-					alert("thành công");
-				}
 			});
 		})
 	});
