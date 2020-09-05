@@ -139,7 +139,7 @@
 					lan: $(this).data('lan'),
 					ma_mon: $('#ten_mon').val(),
 					diem: $(this).val(),
-					kieu_thi: $(this).data('kieu_thi'),
+					kieu_thi: $('#kieu_thi').val(),
 				},
 			});
 		})
