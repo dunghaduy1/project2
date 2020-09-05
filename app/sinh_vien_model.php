@@ -49,6 +49,7 @@ class sinh_vien_model extends Model
     ]);
     return $lop;
   }
+
 static function get_sinh_vien_by_lop($ma_lop){
     $sinh_vien = DB::select("select * from sinh_vien where ma_lop = ?",[
       $ma_lop

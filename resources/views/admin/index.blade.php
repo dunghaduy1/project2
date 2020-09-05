@@ -79,7 +79,6 @@
           <div class="dropdown">
             <button class="btn btn-info dropdown-toggle" id="userDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Xin chào <?php echo Session::get('ten'); ?></button>
             <div class="dropdown-menu" aria-labelledby="userDropdown">
-             <a class="dropdown-item" href="#">Thông tin</a>
              <a class="dropdown-item" href="{{ route('admin.logout') }}">Đăng xuất</a>
            </div>
           </div>

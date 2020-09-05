@@ -9,6 +9,7 @@
 		<th>Tên ngành</th>
 		<th>Tên lớp</th>
 		<th>Tên môn</th>
+		<th>Kiểu thi</th>
 	</tr>
 	<tr>
 		<td>
@@ -35,6 +36,12 @@
 		<td>
 			<select name="ma_mon" id="ten_mon"class="form-control">
 				<option value="0"></option>
+			</select>
+		</td>
+		<td>
+			<select name="kieu_thi" id="kieu_thi"class="form-control">
+				<option value="1">Lý thuyết</option>
+				<option value="2">Thực hành</option>
 			</select>
 		</td>
 	</tr>
@@ -90,9 +97,6 @@
 					$("#ten_mon").html(data);
 				}
 			});
-		});
-		$('#ten_mon').change(function(){
-			$("#monid").val($('#ten_mon').val());
 		});
 		$('#ten_nganh,#ten_mon,#ten_lop,#ten_khoa').change(function(){
 			$.ajax({

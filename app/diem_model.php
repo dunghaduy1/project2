@@ -45,19 +45,19 @@ class diem_model extends Model
     $mon=DB::Select("Select * FROM mon_hoc ");
     return $mon;
   }
-  static function get_diem_by_lop_mon($ma_lop,$ma_mon){
+  static function get_diem_by_lop_mon($ma_lop,$ma_mon,$kieu_thi){
     $diem = DB::select("SELECT sinh_vien.ma_sinh_vien as ma_sinh_vien,
                               sinh_vien.ten as ten,
                               sinh_vien.ngay_sinh as ngay_sinh,
                               diem.diem_lan_mot as diem_lan_mot,
-                              diem.diem_lan_hai as diem_lan_hai,
-                              diem.kieu_thi as kieu_thi 
+                              diem.diem_lan_hai as diem_lan_hai
                       FROM (sinh_vien LEFT JOIN lop ON sinh_vien.ma_lop = lop.ma_lop)
                       INNER JOIN diem ON sinh_vien.ma_sinh_vien = diem.ma_sinh_vien
                       INNER JOIN mon_hoc ON diem.ma_mon = mon_hoc.ma_mon
-                      WHERE lop.ma_lop=? and mon_hoc.ma_mon=?",[
+                      WHERE lop.ma_lop=? and mon_hoc.ma_mon=? and diem.kieu_thi=?",[
       $ma_lop,
-      $ma_mon
+      $ma_mon,
+      $kieu_thi
     ]);
     return $diem;
   }
@@ -84,14 +84,12 @@ class diem_model extends Model
     ]);
   }
   public function update_diem_mot(){
-    DB::connection()->enableQueryLog();
     DB::update("update diem set diem_lan_mot=? where ma_sinh_vien=? and ma_mon=? and kieu_thi=?",[
         $this->diem,
         $this->ma_sinh_vien,
         $this->ma_mon,
         $this->kieu_thi,
       ]);
-    print_r(DB::connection()->getQueryLog());
   }
   public function update_diem_hai(){
     DB::update("update diem set diem_lan_hai=? where ma_sinh_vien=? and ma_mon=? and kieu_thi=?",[

@@ -12,6 +12,11 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+	Route::get('','client@login')->name('login');
+	Route::post('load_diem','client@load_diem')->name('load_diem');
+
+
 Route::group(['prefix'=>'admin','as'=>'admin.'],function(){
 	Route::get('','login_controller@login')->name('login');
 	Route::post('login_xu_ly','login_controller@login_process')->name('login_xu_ly');

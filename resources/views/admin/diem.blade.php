@@ -37,6 +37,13 @@
 				<option value="0">Chọn</option>
 			</select>
 		</td>
+		<td>
+			<select name="kieu_thi" id="kieu_thi"class="form-control">
+				<option value="">-Chọn-</option>
+				<option value="1">Lý thuyết</option>
+				<option value="2">Thực hành</option>
+			</select>
+		</td>
 	</tr>
 
 
@@ -48,7 +55,6 @@
 	  	<th>Ngày sinh</th>
 	  	<th>Điểm lần 1</th>
 	  	<th>Điểm lần 2</th>
-	  	<th>Kiểu thi</th>
 	  </tr>
 	</thead>
 	<tbody id="viewdiem">
@@ -87,7 +93,7 @@
 				}
 			});
 		});
-		$('#ten_nganh,#ten_mon,#ten_lop,#ten_khoa').change(function(){
+		$('#ten_mon,#ten_lop,#kieu_thi').change(function(){
 			$.ajax({
 				url: '{{route("quan_ly_diem.load_diem")}}',
 				dataType: 'json',
@@ -95,9 +101,10 @@
 				data:{
 					ma_lop: $('#ten_lop').val(),
 					ma_mon: $('#ten_mon').val(),
+					kieu_thi: $('#kieu_thi').val(),
 				},
 				success: function(data){
-					$('#view_diem').empty();
+					$('#viewdiem').empty();
 					$(data).each(function(){
 						$('#viewdiem').append(`
 							<tr>
@@ -116,9 +123,6 @@
 								</td>
 								<td>
 									<input type="text" data-ma_sinh_vien="${this.ma_sinh_vien}" data-lan="2" class="form-control input_diem" data-kieu_thi="${this.kieu_thi}"  value="${this.diem_lan_hai}">
-								</td>
-							  	<td>
-									${(this.kieu_thi==1) ? "Lý thuyết":"Thực hành" }
 								</td>
 							</tr>
 						`);

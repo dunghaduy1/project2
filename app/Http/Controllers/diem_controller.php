@@ -45,8 +45,9 @@ class diem_controller extends Controller
 		public function load_diem(Request $request){
 		$ma_lop = $request->ma_lop;
 		$ma_mon = $request->ma_mon;
+		$kieu_thi = $request->kieu_thi;
 
-		$diem = diem_model::get_diem_by_lop_mon($ma_lop,$ma_mon);
+		$diem = diem_model::get_diem_by_lop_mon($ma_lop,$ma_mon,$kieu_thi);
 		return $diem;        
 	}
 	public function load_them_diem(Request $request){
