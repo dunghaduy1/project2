@@ -30,7 +30,7 @@ class diemRequest extends FormRequest
     public function messages()
     {
         return [
-            'diem.between' => 'Tên khóa không được để trống',
+            'diem.between' => 'Điểm nhập từ 0 đến 10',
         ];
     }
 }

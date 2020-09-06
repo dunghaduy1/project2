@@ -28,8 +28,14 @@ class sinh_vien_controller extends Controller
 		$sinh_vien->gioi_tinh = $rq->gioi_tinh;
 		$sinh_vien->ma_lop = $rq->ma_lop;
 		$sinh_vien->trang_thai = $rq->trang_thai;
-		$sinh_vien->process_insert();
-		return redirect()->route('quan_ly_sinh_vien.view_sinh_vien');
+		try{
+			$sinh_vien->process_insert();
+		}
+		catch(Exception $e){
+			return redirect()->route('quan_ly_sinh_vien.them_sinh_vien')->with('error', 'Thêm sinh viên thất bại');
+		}
+		return redirect()->route('quan_ly_sinh_vien.them_sinh_vien')->with('success', 'Thêm sinh viên thành công');	
+	
 	}
 	public function sua_sinh_vien(Request $rq){
 		$ma_sinh_vien = $rq->ma_sinh_vien;
@@ -88,5 +94,26 @@ class sinh_vien_controller extends Controller
         return back();
     }
 
-
+    public function kt_email(Request $request){
+		$email = $request->email;
+		$email = sinh_vien_model::kt_email($email);
+		if(count($email) == 1){
+			$output="Email đã tồn tại";
+		}
+		else{
+			$output="Email có thể sử dụng";
+		}
+		echo $output;
+	}
+	public function kt_sdt(Request $request){
+		$so_dien_thoai = $request->so_dien_thoai;
+		$sdt = sinh_vien_model::kt_sdt($so_dien_thoai);
+		if(count($sdt) == 1){
+			$output="Số điện thoại đã tồn tại";
+		}
+		else{
+			$output="Số điện thoại có thể sử dụng";
+		}
+		echo $output;
+	}
 }

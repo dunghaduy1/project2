@@ -49,7 +49,18 @@ class sinh_vien_model extends Model
     ]);
     return $lop;
   }
-
+  static function kt_email($email){
+      $email=DB::Select("Select * FROM sinh_vien where email=? ",[
+        $email
+      ]);
+      return $email;
+    }
+    static function kt_sdt($so_dien_thoai){
+      $so_dien_thoai=DB::Select("Select * FROM sinh_vien where so_dien_thoai=? ",[
+        $so_dien_thoai
+      ]);
+      return $so_dien_thoai;
+    }
 static function get_sinh_vien_by_lop($ma_lop){
     $sinh_vien = DB::select("select * from sinh_vien where ma_lop = ?",[
       $ma_lop

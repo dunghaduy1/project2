@@ -34,11 +34,13 @@
 		<div class="wrap-contact100">
 			<form class="contact100-form validate-form" action="{{ route('load_diem') }}" method="POST">
 				{{ csrf_field() }}
-			        
+			          
 				<span class="contact100-form-title">
 					<img src="{{asset('img/logo-admin.png')}}" alt="">Tra cứu điểm BKACAD
 				</span>
-				{{ $errors->first('error') }}
+				@if (Session::has('error'))
+					    {{ Session::get('error') }}
+					  @endif
 				<div class="wrap-input100 validate-input" data-validate = "Nhập email : e@a.x">
 					<input class="input100" type="text" name="email" placeholder="E-mail">
 					<span class="focus-input100"></span>

@@ -87,6 +87,8 @@ Route::group(['prefix'=>'quan_ly_sinh_vien','as'=>'quan_ly_sinh_vien.','middlewa
 	Route::get('them_sinh_vien_excel','sinh_vien_controller@them_sinh_vien_excel')->name('them_sinh_vien_excel');
 	Route::post('importExcel','sinh_vien_controller@importExcel')->name('importExcel');
 	Route::get('load_lop','sinh_vien_controller@load_lop')->name('load_lop');
+	Route::get('kt_email','sinh_vien_controller@kt_email')->name('kt_email');
+	Route::get('kt_sdt','sinh_vien_controller@kt_sdt')->name('kt_sdt');
 
 	
 });
