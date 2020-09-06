@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
   <link rel="stylesheet" href="{{asset('css/app.css')}}">
   <!-- icon -->
-  <link rel="icon" href="{{asset('img/log.png')}}">
+  <link rel="icon" href="https://www.bkacad.com/images/favicon.ico">
   
   <!-- end linking -->
   <title>@yield('name')</title>

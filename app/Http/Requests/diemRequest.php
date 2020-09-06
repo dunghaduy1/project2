@@ -24,7 +24,13 @@ class diemRequest extends FormRequest
     public function rules()
     {
         return [
-            'diem' => 'min:0|max:10',
+            'diem' => 'between:0,10',
+        ];
+    }
+    public function messages()
+    {
+        return [
+            'diem.between' => 'Tên khóa không được để trống',
         ];
     }
 }

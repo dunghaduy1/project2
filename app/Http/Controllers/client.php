@@ -17,7 +17,12 @@ class client extends Controller
 		$so_dien_thoai = $request->so_dien_thoai;
 		$sinh_vien= client_model::get_sinh_vien_by_email_sdt($email,$so_dien_thoai);
 		$diem = client_model::get_diem_by_email_sdt($email,$so_dien_thoai);
-		return view ('student.diem', compact('diem','sinh_vien'));     
+		if(count($sinh_vien) == 1){
+            return view ('student.diem', compact('diem','sinh_vien')); 
+        }
+        else{
+            return redirect()->route('login')->with('error','Thông tin không đúng');
+        }		    
   
 	}
 }

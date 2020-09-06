@@ -8,24 +8,29 @@
 	<link href="https://use.fontawesome.com/releases/v5.0.4/css/all.css" rel="stylesheet">
 	<link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
 	<link rel="stylesheet" href="{{asset('css/app.css')}}">
+	 <link rel="icon" href="https://www.bkacad.com/images/favicon.ico">
 </head>
 <body>
+	
 	<div class="container">
+		<div class="header" style="padding:20px">
+		<img src="{{asset('img/logo_1591255072.png')}}" alt="">
+	</div>
 		<div class="row">
 			<div class="col-3">
-				<table class="table Table-Bordered" id="tt_sinh_vien" >
+				<table class="table Table-Bordered" id="tt_sinh_vien" border="1">
 			      @foreach ($sinh_vien as $each)
 
 					  <tr>
-					  	<th>Mã sinh viên</th>
+					  	<th style="background-color: #006182;color:white">Mã sinh viên</th>
 					  	<td>{{ $each->ma_sinh_vien }}</td>
 					  </tr>
 					  <tr>
-					  	<th>Tên sinh viên</th>
+					  	<th style="background-color: #006182;color:white">Tên sinh viên</th>
 					  	<td>{{ $each->ten }}</td>
 					  </tr>
 					  <tr>
-					  	<th>Ngày sinh</th>
+					  	<th style="background-color: #006182;color:white">Ngày sinh</th>
 					  	<td>{{ $each->ngay_sinh }}</td>
 					  </tr>
 					 @endforeach
@@ -33,7 +38,7 @@
 	    	</div>
 			<div class="col-9">
 	      		<table class="table table-hover Table-Striped" border="1" id="tt_sinh_vien" >
-	      			<thead style="background-color: #ae55ff;color:white">
+	      			<thead style="background-color: #006182;color:white">
 		      			<tr>
 		      				<th>Tên môn</th>
 		      				<th>Kiểu thi</th>
@@ -56,8 +61,30 @@
 	    	</div>	
 		</div>
 		
-			
+		
 	</div>
+	<div class="footer_bot" style="color: #ffffff;background: #006182;position: absolute; bottom: 0;width: 100%;">
+            <div class="container-extra" style="margin: auto;">
+                <div class="row c-footer_end">
+                    <div class="c-social col-md-3">
+                        <span class="c-title" style="font-size: 16px;margin-right: 10px;">
+                            Liên kết mạng xã hội                        
+                        </span>
+                        <a class="c-item" target="_blank" href="https://www.facebook.com/Bkacad/"><img
+                                    src="{{asset('img/img5.png')}}"></a>
+                        <a class="c-item" target="_blank" href="https://www.youtube.com/user/bkacad"><img
+                                    src="{{asset('img/img12.png')}}"></a>
+                        <a class="c-item" target="_blank" href="https://instagram.com/bkacad_students?igshid=1ve1j2r3gah26"><img
+                                    src="{{asset('img/img13.png')}}"></a>
+                        <!--                                    <a class="a3" target="_blank" href="-->
+                        <!--"><img-->
+                        <!--                                                src="templates/default/images/img_footer/img15.png"></a>-->
+                    </div>
+                    <div class="c-copyright col-md-6" style="font-size: 16px;text-align: center;padding-top: 5px;">
+                        Copyright © 2020 BKACAD. All Right Reserved                    </div>
+                </div>
+            </div>
+        </div>
 	
 </body>
 </html>

@@ -9,6 +9,7 @@
 		<th>Tên ngành</th>
 		<th>Tên lớp</th>
 		<th>Tên môn</th>
+		<th>Kiểu thi</th>
 	</tr>
 	<tr>
 		<td>
@@ -46,7 +47,15 @@
 		</td>
 	</tr>
 
-
+	@if ($errors->any()) 
+	    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+    @endif
 <table class="table table-hover"  >
 	<thead>
 	  <tr>
@@ -57,6 +66,7 @@
 	  	<th>Điểm lần 2</th>
 	  </tr>
 	</thead>
+	
 	<tbody id="viewdiem">
 
 	</tbody>
@@ -118,11 +128,11 @@
 									${this.ngay_sinh}
 								</td>
 							  	<td>
-							  	<input type="text" data-ma_sinh_vien="${this.ma_sinh_vien}" data-lan="1" class="form-control input_diem" data-kieu_thi="${this.kieu_thi}"  value="${this.diem_lan_mot}">
+							  	<input type="text" name="diem" data-ma_sinh_vien="${this.ma_sinh_vien}" data-lan="1" class="form-control input_diem" data-kieu_thi="${this.kieu_thi}"  value="${this.diem_lan_mot}">
 									
 								</td>
 								<td>
-									<input type="text" data-ma_sinh_vien="${this.ma_sinh_vien}" data-lan="2" class="form-control input_diem" data-kieu_thi="${this.kieu_thi}"  value="${this.diem_lan_hai}">
+									<input type="text" name="diem" data-ma_sinh_vien="${this.ma_sinh_vien}" data-lan="2" class="form-control input_diem" data-kieu_thi="${this.kieu_thi}"  value="${this.diem_lan_hai}">
 								</td>
 							</tr>
 						`);
@@ -141,6 +151,10 @@
 					diem: $(this).val(),
 					kieu_thi: $('#kieu_thi').val(),
 				},
+				success: function(){
+					alert("Sửa thành công");
+				}
+				
 			});
 		})
 	});

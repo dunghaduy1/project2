@@ -24,7 +24,7 @@
 	<link rel="stylesheet" type="text/css" href="{{asset('student/css/util.css')}}">
 	<link rel="stylesheet" type="text/css" href="{{asset('student/css/main.css')}}">
 <!--===============================================================================================-->
-	<link rel="icon" href="{{asset('img/log.png')}}">
+	 <link rel="icon" href="https://www.bkacad.com/images/favicon.ico">
 </head>
 <body>
 
@@ -38,7 +38,7 @@
 				<span class="contact100-form-title">
 					<img src="{{asset('img/logo-admin.png')}}" alt="">Tra cứu điểm BKACAD
 				</span>
-
+				{{ $errors->first('error') }}
 				<div class="wrap-input100 validate-input" data-validate = "Nhập email : e@a.x">
 					<input class="input100" type="text" name="email" placeholder="E-mail">
 					<span class="focus-input100"></span>
