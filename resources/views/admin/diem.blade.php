@@ -128,11 +128,11 @@
 									${this.ngay_sinh}
 								</td>
 							  	<td>
-							  	<input type="text" name="diem" data-ma_sinh_vien="${this.ma_sinh_vien}" data-lan="1" class="form-control input_diem" data-kieu_thi="${this.kieu_thi}"  value="${this.diem_lan_mot}">
+							  	<input type="number" name="diem" data-ma_sinh_vien="${this.ma_sinh_vien}" data-lan="1" class="form-control input_diem" min="0" max="10"  value="${this.diem_lan_mot}">
 									
 								</td>
 								<td>
-									<input type="text" name="diem" data-ma_sinh_vien="${this.ma_sinh_vien}" data-lan="2" class="form-control input_diem" data-kieu_thi="${this.kieu_thi}"  value="${this.diem_lan_hai}">
+									<input type="number" name="diem" data-ma_sinh_vien="${this.ma_sinh_vien}" data-lan="2" class="form-control input_diem"  min="0" max="10" value="${this.diem_lan_hai}">
 								</td>
 							</tr>
 						`);

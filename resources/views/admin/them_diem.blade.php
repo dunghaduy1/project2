@@ -3,13 +3,24 @@
 	Thêm điểm
 @endsection
 @section('content')
+	 @if (Session::has('success'))
+	    <span class="alert alert-success alert-dismissible">
+	    	{{ Session::get('success') }}
+	    </span>
+	    
+	  @endif
+  @if (Session::has('error'))
+    <span class="alert alert-success alert-dismissible">
+    	{{ Session::get('error') }}
+    </span>
+    
+  @endif
 <table class="table" >
 	<tr>
 		<th>Tên khóa</th>
 		<th>Tên ngành</th>
 		<th>Tên lớp</th>
 		<th>Tên môn</th>
-		<th>Kiểu thi</th>
 	</tr>
 	<tr>
 		<td>
@@ -38,16 +49,11 @@
 				<option value="0"></option>
 			</select>
 		</td>
-		<td>
-			<select name="kieu_thi" id="kieu_thi"class="form-control">
-				<option value="1">Lý thuyết</option>
-				<option value="2">Thực hành</option>
-			</select>
-		</td>
 	</tr>
 </table>
 <form action="{{ route('quan_ly_diem.them_diem_xu_ly') }}" method="post">
 	{{csrf_field()}}
+
 	<table class="table table-hover"  >
 	<thead>
 	  <tr>

@@ -50,7 +50,7 @@ class diem_controller extends Controller
 		$diem = diem_model::get_diem_by_lop_mon($ma_lop,$ma_mon,$kieu_thi);
 		return $diem;        
 	}
-	public function load_them_diem(Request $request){
+	public function load_them_diem(diemRequest $request){
 		$ma_lop = $request->ma_lop;
 		$ma_mon = $request->ma_mon;
 
@@ -61,8 +61,8 @@ class diem_controller extends Controller
 		  		<td> '.$each->ma_sinh_vien.' </td>
 		  		<td> '.$each->ten.' </td>
 		  		<td> '.$each->ngay_sinh.' </td>
-		  		<td><input type="text" id="" name="diem['.$each->ma_sinh_vien.'][1]" class="form-control"></td>
-		  		<td><input type="text" id="" name="diem['.$each->ma_sinh_vien.'][2]" class="form-control"></td>
+		  		<td><input type="number" min="0" max="10" id="" name="diem['.$each->ma_sinh_vien.'][1]" class="form-control"></td>
+		  		<td><input type="number" min="0" max="10" id="" name="diem['.$each->ma_sinh_vien.'][2]" class="form-control"></td>
 		  		<td><select name="kieu_thi['.$each->ma_sinh_vien.']" id="" class="form-control">
 		  				<option value="1">Lý thuyết</option>
 		  				<option value="2">Thực Hành</option>
@@ -88,12 +88,12 @@ class diem_controller extends Controller
 					$diem->process_insert();
 				}
 				catch(Exception $e){
-
+					return redirect()->route('quan_ly_diem.them_diem')->with('error', 'Thêm điểm thất bại');
 				}
 			}
 		}
 
-		return redirect()->route('quan_ly_diem.view_diem');
+		return redirect()->route('quan_ly_diem.them_diem')->with('success', 'Thêm điểm thành công');
 	}
 
 	public function update_diem(diemRequest $rq)

@@ -6,11 +6,11 @@
 <form action="{{ route('quan_ly_sinh_vien.them_sinh_vien_xu_ly') }}" enctype="multipart/form-data" method="POST">
 	{{ csrf_field() }}
 	  @if (Session::has('success'))
-    <span class="alert alert-success alert-dismissible">
-    	{{ Session::get('success') }}
-    </span>
-    
-  @endif
+	    <span class="alert alert-success alert-dismissible">
+	    	{{ Session::get('success') }}
+	    </span>
+	    
+	  @endif
   @if (Session::has('error'))
     <span class="alert alert-success alert-dismissible">
     	{{ Session::get('error') }}

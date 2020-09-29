@@ -24,13 +24,13 @@ class diemRequest extends FormRequest
     public function rules()
     {
         return [
-            'diem' => 'between:0,10',
+            'diem' => 'numeric|between:0,10',
         ];
     }
     public function messages()
     {
         return [
-            'diem.between' => 'Điểm nhập từ 0 đến 10',
+            'diem.digits_between' => 'Điểm nhập từ 0 đến 10',
         ];
     }
 }

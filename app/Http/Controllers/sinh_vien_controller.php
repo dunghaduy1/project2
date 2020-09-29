@@ -7,6 +7,7 @@ use App\sinh_vien_model;
 use App\Http\Requests\sinhVienRequest;
 use App\Imports\sinhVienImport;
 use Maatwebsite\Excel\Facades\Excel;
+
 class sinh_vien_controller extends Controller
 {
 	public function view_sinh_vien(){
@@ -30,8 +31,7 @@ class sinh_vien_controller extends Controller
 		$sinh_vien->trang_thai = $rq->trang_thai;
 		try{
 			$sinh_vien->process_insert();
-		}
-		catch(Exception $e){
+		}catch(\Exception $e){
 			return redirect()->route('quan_ly_sinh_vien.them_sinh_vien')->with('error', 'Thêm sinh viên thất bại');
 		}
 		return redirect()->route('quan_ly_sinh_vien.them_sinh_vien')->with('success', 'Thêm sinh viên thành công');	
@@ -89,9 +89,14 @@ class sinh_vien_controller extends Controller
   }
   public function importExcel() 
     {
-        Excel::import(new sinhVienImport,request()->file('excel'));
-           
-        return back();
+        
+        try{
+        	Excel::import(new sinhVienImport,request()->file('excel'));
+		}
+		catch(\Exception $e){
+			return redirect()->route('quan_ly_sinh_vien.them_sinh_vien_excel')->with('error', 'Thêm sinh viên thất bại');
+		}
+		return redirect()->route('quan_ly_sinh_vien.them_sinh_vien_excel')->with('success', 'Thêm sinh viên thành công');	
     }
 
     public function kt_email(Request $request){
